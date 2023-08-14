@@ -12,7 +12,7 @@ if (window.location.pathname === '/notes') {
   noteList = document.querySelectorAll('.list-container .list-group');
 }
 
-// Show an element
+// Show an element testing hello
 const show = (elem) => {
   elem.style.display = 'inline';
 };
