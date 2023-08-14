@@ -16,7 +16,7 @@ app.get('/notes', (req, res) => {
 });
 
 app.get('/api/notes', (req, res) => {
-    fs.readFile('/db/db.json', (err, data) => {
+    fs.readFile('./db/db.json', (err, data) => {
         if(err){
             console.log(err);
         } else {
