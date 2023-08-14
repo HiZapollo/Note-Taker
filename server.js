@@ -39,13 +39,13 @@ app.post('/api/notes', (req, res) => {
 
         //const noteString = JSON.stringify(newNote);
 
-        fs.readFile('/db/db.json', (err, data) => {
+        fs.readFile('./db/db.json', (err, data) => {
             if(err){
                 console.log(err);
             } else {
                 const parsedNote = JSON.parse(data);
                 parsedNote.push(newNote);
-                fs.writeFile(`/db/db.json`, JSON.stringify(parsedNote), (err) => {
+                fs.writeFile(`./db/db.json`, JSON.stringify(parsedNote), (err) => {
                     err
                         ? console.log(err)
                         : console.log(`Note '${newNote.title}' has been written successfully`)
