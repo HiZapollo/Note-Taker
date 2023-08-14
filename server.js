@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const uuid = require('uuid');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -35,6 +36,7 @@ app.post('/api/notes', (req, res) => {
         const newNote = {
             title,
             text,
+            id: uuid.v4()
         };
 
         //const noteString = JSON.stringify(newNote);
