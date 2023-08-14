@@ -6,10 +6,12 @@ const uuid = require('uuid');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+// middleware
 app.use(express.json());
 
 app.use(express.static('public'));
 
+// first two requests are simply to obtain the html files and display them
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'));
 });
@@ -18,6 +20,7 @@ app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/notes.html'));
 });
 
+// this gets the notes from the db and returns them to be displayed
 app.get('/api/notes', (req, res) => {
     fs.readFile('./db/db.json', (err, data) => {
         if(err){
@@ -29,6 +32,7 @@ app.get('/api/notes', (req, res) => {
     })
 });
 
+// adds a new note to the db
 app.post('/api/notes', (req, res) => {
     const { title, text } = req.body;
 
@@ -36,10 +40,8 @@ app.post('/api/notes', (req, res) => {
         const newNote = {
             title,
             text,
-            id: uuid.v4()
+            id: uuid.v4()// unique id
         };
-
-        //const noteString = JSON.stringify(newNote);
 
         fs.readFile('./db/db.json', (err, data) => {
             if(err){

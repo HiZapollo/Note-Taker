@@ -1,10 +1,7 @@
 [
     {
         "title": "Test Title",
-        "text": "Test text"
-    },
-    {
-        "title": "First post",
-        "text": "First text"
+        "text": "Test text",
+        "id": "1"
     }
 ]
